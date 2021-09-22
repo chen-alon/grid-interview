@@ -1,22 +1,23 @@
-import React from 'react';
+import React from "react";
 
 const Grid = ({ config, data }) => (
   <table>
     <thead>
-    <tr>
-      <th>Col 1</th>
-      <th>Col 2</th>
-    </tr>
+      <tr>
+        {config.map((header) => (
+          <th key={header.title}>{header.title}</th>
+        ))}
+      </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Data 1</td>
-      <td>Data 2</td>
-    </tr>
-    <tr>
-      <td>Data 1</td>
-      <td>Data 2</td>
-    </tr>
+      {data.map((movie) => (
+        <tr key={movie.Title}>
+          <td>{movie.imdbID}</td>
+          <td>{movie.Title}</td>
+          <td>{movie.imdbRating}</td>
+          <td>{config[3].component({ data: movie.Trailer })}</td>
+        </tr>
+      ))}
     </tbody>
   </table>
 );
